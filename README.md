@@ -1,70 +1,140 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🎯 Gestor de Notas - Frontend - README
 
-## Available Scripts
+## 🚀 Descripción del Proyecto
+Este es el **frontend** de un proyecto de gestión de notas utilizando **React**. El frontend permite a los usuarios iniciar sesión, gestionar notas (crear, editar, eliminar) y visualizarlas.
 
-In the project directory, you can run:
+## 🛠 Tecnologías Utilizadas
+- **Frontend**: React, Axios, React Router DOM
+- **Autenticación**: JWT (JSON Web Tokens)
 
-### `npm start`
+## 🔥 Características
+- **Inicio de sesión** con JWT.
+- **CRUD de notas** (Crear, Leer, Actualizar, Eliminar).
+- **Rutas protegidas** para que solo los usuarios autenticados puedan acceder a las notas.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ⚙️ Instrucciones para Correr el Proyecto (Frontend)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 1️⃣ Clonar el Repositorio
+Clona el repositorio en tu máquina local:
+```bash
+git clone https://github.com/tu-usuario/gestor-de-notas-front.git
+cd gestor-de-notas-front
+```
 
-### `npm test`
+### 2️⃣ Instalar Dependencias
+Instala las dependencias necesarias con npm:
+```bash
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 3️⃣ Configurar Variables de Entorno
+Asegúrate de configurar las variables de entorno necesarias en un archivo `.env`:
+```bash
+REACT_APP_API_BASE_URL=http://localhost:8000
+REACT_APP_TOKEN_STORAGE_KEY=auth_token
+```
+Estas variables indican la URL base para las peticiones API y la clave para almacenar el token JWT.
 
-### `npm run build`
+### 4️⃣ Ejecutar el Proyecto
+Inicia el servidor de desarrollo:
+```bash
+npm start
+```
+Esto abrirá la aplicación en `http://localhost:3000`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📑 **APIs Utilizadas en el Frontend**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 📌 **API de Autenticación** (`/api/auth/login` y `/api/auth/register`)
+#### **POST `/api/auth/login`**
+Permite que un usuario inicie sesión y reciba un token JWT.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Datos requeridos**:
+  ```json
+  {
+    "username": "test",
+    "password": "password"
+  }
+  ```
+- **Respuesta esperada**:
+  ```json
+  {
+    "access_token": "token_jwt_aqui",
+    "token_type": "bearer"
+  }
+  ```
 
-### `npm run eject`
+#### **POST `/api/auth/register`**
+Permite que un usuario se registre con un nuevo nombre de usuario y contraseña.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Datos requeridos**:
+  ```json
+  {
+    "username": "nuevo_usuario",
+    "password": "nueva_contraseña"
+  }
+  ```
+- **Respuesta esperada**:
+  ```json
+  {
+    "access_token": "token_jwt_aqui",
+    "token_type": "bearer"
+  }
+  ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 📌 **API de Notas** (`/api/notes`)
+#### **GET `/api/notes`**
+Obtiene todas las notas del usuario autenticado.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Respuesta esperada**:
+  ```json
+  [
+    {
+      "id": 1,
+      "title": "Nota 1",
+      "content": "Contenido de la nota 1",
+      "timestamp": "2025-01-20T12:00:00Z"
+    },
+    {
+      "id": 2,
+      "title": "Nota 2",
+      "content": "Contenido de la nota 2",
+      "timestamp": "2025-01-20T13:00:00Z"
+    }
+  ]
+  ```
 
-## Learn More
+#### **POST `/api/notes`**
+Crea una nueva nota para el usuario autenticado.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Datos requeridos**:
+  ```json
+  {
+    "title": "Título de la nota",
+    "content": "Contenido de la nota"
+  }
+  ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### **PUT `/api/notes/{id}`**
+Actualiza una nota existente.
 
-### Code Splitting
+- **Datos requeridos**:
+  ```json
+  {
+    "title": "Nuevo título",
+    "content": "Nuevo contenido",
+    "updated_at": "2025-01-20T14:00:00Z"
+  }
+  ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### **DELETE `/api/notes/{id}`**
+Elimina una nota por su `id`.
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🛠 Scripts del Proyecto
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Iniciar el frontend**: `npm start`
+- **Construir para producción**: `npm run build`
