@@ -1,17 +1,28 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';
-import NotesPage from './pages/NotesPage';
+import React, { useState } from "react";
+import Login from "./components/Login";
+import { getAuthToken, logout } from "./api"; // Corregido
 
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/notes" element={<NotesPage />} />
-      </Routes>
-    </Router>
-  );
-}
+
+const App = () => {
+    const [isAuthenticated, setIsAuthenticated] = useState(!!getAuthToken());
+
+    const handleLogout = () => {
+        logout();
+        setIsAuthenticated(false);
+    };
+
+    return (
+        <div>
+            {isAuthenticated ? (
+                <div>
+                    <h2>Bienvenido</h2>
+                    <button onClick={handleLogout}>Cerrar sesión</button>
+                </div>
+            ) : (
+                <Login onLoginSuccess={() => setIsAuthenticated(true)} />
+            )}
+        </div>
+    );
+};
 
 export default App;

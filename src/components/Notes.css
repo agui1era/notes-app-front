@@ -1,0 +1,61 @@
+.notes-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+.note-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.note-form input, 
+.note-form textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.note-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.note-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.note-item {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.note-item h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.note-item button {
+    margin-top: 10px;
+    margin-right: 5px;
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+}
+
+.note-item button:nth-child(2) {
+    background-color: red;
+    color: white;
+}

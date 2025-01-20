@@ -1,0 +1,63 @@
+/* 🎨 Contenedor principal */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* 🎨 Estilos para el formulario */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* 🎨 Grupo de inputs */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+/* 🎨 Estilos para los inputs */
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* 🎨 Botón con animación */
+.login-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+/* 🎨 Mensaje de error */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: -10px;
+}
