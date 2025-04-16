@@ -1,140 +1,139 @@
+# 🎯 Note Manager - Frontend - README
 
-# 🎯 Gestor de Notas - Frontend - README
+## 🚀 Project Description
+This is the **frontend** of a note management project using **React**. The frontend allows users to log in, manage notes (create, edit, delete), and view them.
 
-## 🚀 Descripción del Proyecto
-Este es el **frontend** de un proyecto de gestión de notas utilizando **React**. El frontend permite a los usuarios iniciar sesión, gestionar notas (crear, editar, eliminar) y visualizarlas.
-
-## 🛠 Tecnologías Utilizadas
+## 🛠 Technologies Used
 - **Frontend**: React, Axios, React Router DOM
-- **Autenticación**: JWT (JSON Web Tokens)
+- **Authentication**: JWT (JSON Web Tokens)
 
-## 🔥 Características
-- **Inicio de sesión** con JWT.
-- **CRUD de notas** (Crear, Leer, Actualizar, Eliminar).
-- **Rutas protegidas** para que solo los usuarios autenticados puedan acceder a las notas.
+## 🔥 Features
+- **Login** with JWT.
+- **Note CRUD** (Create, Read, Update, Delete).
+- **Protected routes** so only authenticated users can access notes.
 
-## ⚙️ Instrucciones para Correr el Proyecto (Frontend)
+## ⚙️ Instructions for Running the Project (Frontend)
 
-### 1️⃣ Clonar el Repositorio
-Clona el repositorio en tu máquina local:
+### 1️⃣ Clone the Repository
+Clone the repository to your local machine:
 ```bash
-git clone https://github.com/tu-usuario/gestor-de-notas-front.git
-cd gestor-de-notas-front
+git clone https://github.com/your-user/front-notes-manager.git
+cd front-notes-manager
 ```
 
-### 2️⃣ Instalar Dependencias
-Instala las dependencias necesarias con npm:
+### 2️⃣ Install Dependencies
+Install the necessary dependencies with npm:
 ```bash
 npm install
 ```
 
-### 3️⃣ Configurar Variables de Entorno
-Asegúrate de configurar las variables de entorno necesarias en un archivo `.env`:
+### 3️⃣ Configure Environment Variables
+Make sure to configure the necessary environment variables in a `.env` file:
 ```bash
 REACT_APP_API_BASE_URL=http://localhost:8000
 REACT_APP_TOKEN_STORAGE_KEY=auth_token
 ```
-Estas variables indican la URL base para las peticiones API y la clave para almacenar el token JWT.
+These variables indicate the base URL for API requests and the key for storing the JWT token.
 
-### 4️⃣ Ejecutar el Proyecto
-Inicia el servidor de desarrollo:
+### 4️⃣ Run the Project
+Start the development server:
 ```bash
 npm start
 ```
-Esto abrirá la aplicación en `http://localhost:3000`.
+This will open the application at `http://localhost:3000`.
 
-## 📑 **APIs Utilizadas en el Frontend**
+## 📑 **APIs Used in the Frontend**
 
-### 📌 **API de Autenticación** (`/api/auth/login` y `/api/auth/register`)
+### 📌 **Authentication API** (`/api/auth/login` and `/api/auth/register`)
 #### **POST `/api/auth/login`**
-Permite que un usuario inicie sesión y reciba un token JWT.
+Allows a user to log in and receive a JWT token.
 
-- **Datos requeridos**:
-  ```json
-  {
-    "username": "test",
-    "password": "password"
-  }
-  ```
-- **Respuesta esperada**:
-  ```json
-  {
-    "access_token": "token_jwt_aqui",
-    "token_type": "bearer"
-  }
-  ```
+- **Required data**:
+```json
+{
+"username": "test",
+"password": "password"
+}
+```
+- **Expected response**:
+```json
+{
+"access_token": "token_jwt_here",
+"token_type": "bearer"
+}
+```
 
 #### **POST `/api/auth/register`**
-Permite que un usuario se registre con un nuevo nombre de usuario y contraseña.
+Allows a user to register with a new username and password.
 
-- **Datos requeridos**:
-  ```json
-  {
-    "username": "nuevo_usuario",
-    "password": "nueva_contraseña"
-  }
-  ```
-- **Respuesta esperada**:
-  ```json
-  {
-    "access_token": "token_jwt_aqui",
-    "token_type": "bearer"
-  }
-  ```
+- **Required data**:
+```json
+{
+"username": "new_user",
+"password": "new_password"
+}
+```
+- **Expected response**:
+```json
+{
+"access_token": "jwt_token_here",
+"token_type": "bearer"
+}
+```
 
 ---
 
-### 📌 **API de Notas** (`/api/notes`)
+### 📌 **Notes API** (`/api/notes`)
 #### **GET `/api/notes`**
-Obtiene todas las notas del usuario autenticado.
+Gets all the authenticated user's notes.
 
-- **Respuesta esperada**:
-  ```json
-  [
-    {
-      "id": 1,
-      "title": "Nota 1",
-      "content": "Contenido de la nota 1",
-      "timestamp": "2025-01-20T12:00:00Z"
-    },
-    {
-      "id": 2,
-      "title": "Nota 2",
-      "content": "Contenido de la nota 2",
-      "timestamp": "2025-01-20T13:00:00Z"
-    }
-  ]
-  ```
+- **Expected response**:
+```json
+[
+{
+"id": 1,
+"title": "Note 1",
+"content": "Note 1 content",
+"timestamp": "2025-01-20T12:00:00Z"
+},
+{
+"id": 2,
+"title": "Note 2",
+"content": "Note 2 content",
+"timestamp": "2025-01-20T13:00:00Z"
+}
+]
+```
 
 #### **POST `/api/notes`**
-Crea una nueva nota para el usuario autenticado.
+Create a new note for the authenticated user.
 
-- **Datos requeridos**:
-  ```json
-  {
-    "title": "Título de la nota",
-    "content": "Contenido de la nota"
-  }
-  ```
+- **Required data**:
+```json
+{
+"title": "Note title",
+"content": "Note content"
+}
+```
 
 #### **PUT `/api/notes/{id}`**
-Actualiza una nota existente.
+Updates an existing note.
 
-- **Datos requeridos**:
-  ```json
-  {
-    "title": "Nuevo título",
-    "content": "Nuevo contenido",
-    "updated_at": "2025-01-20T14:00:00Z"
-  }
-  ```
+- **Required data**:
+```json
+{
+"title": "New title",
+"content": "New content",
+"updated_at": "2025-01-20T14:00:00Z"
+}
+```
 
 #### **DELETE `/api/notes/{id}`**
-Elimina una nota por su `id`.
+Deletes a note by its `id`.
 
 ---
 
-## 🛠 Scripts del Proyecto
+## 🛠 Project Scripts
 
-- **Iniciar el frontend**: `npm start`
-- **Construir para producción**: `npm run build`
+- **Start the frontend**: `npm start`
+- **Build for production**: `npm run build`
